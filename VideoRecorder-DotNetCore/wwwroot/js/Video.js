@@ -45,7 +45,6 @@ recordButton.addEventListener('click', async () => {
     else {
         stopRecording();
         recordButton.textContent = 'Start Recording';
-        playButton.disabled = false;
         downloadButton.disabled = false;
         codecPreferences.disabled = false;
 
@@ -56,20 +55,6 @@ recordButton.addEventListener('click', async () => {
 
         
     }
-});
-
-const playButton = document.querySelector('button#play');
-playButton.addEventListener('click', () => {
-    debugger
-    recordedVideo.style.display = "block";
-
-    const mimeType = codecPreferences.options[codecPreferences.selectedIndex].value.split(';', 1)[0];
-    const superBuffer = new Blob(recordedBlobs, { type: mimeType });
-    recordedVideo.src = null;
-    recordedVideo.srcObject = null;
-    recordedVideo.src = window.URL.createObjectURL(superBuffer);
-    recordedVideo.controls = true;
-    recordedVideo.play();
 });
 
 const downloadButton = document.querySelector('button#download');
@@ -124,7 +109,6 @@ function startRecording() {
 
     console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
     recordButton.textContent = 'Stop Recording';
-    playButton.disabled = true;
     downloadButton.disabled = true;
     codecPreferences.disabled = true;
     mediaRecorder.onstop = (event) => {
