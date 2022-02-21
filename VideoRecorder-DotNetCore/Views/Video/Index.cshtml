@@ -1,0 +1,46 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="container">
+
+	<h1>
+		<a href="//webrtc.github.io/samples/" title="WebRTC samples homepage">WebRTC Asp.Net Core</a>
+		<span>Audio/Video Recording</span>
+	</h1>
+
+	@*<p>
+		For more information see the MediaStream Recording API <a href="http://w3c.github.io/mediacapture-record/MediaRecorder.html"
+																  title="W3C MediaStream Recording API Editor's Draft">Editor's&nbsp;Draft</a>.
+	</p>*@
+
+	<video id="gum" playsinline autoplay muted style="border: 1px solid rgb(15, 158, 238); height: 240px; width: 320px;" ></video>
+	<video id="recorded" playsinline loop style="border: 1px solid rgb(15, 158, 238); height: 240px; width: 320px; display:none;"></video>
+
+	<div>
+		<button id="start" class="btn btn-success" style="display:none">Start camera</button>
+		<button id="record" class="btn btn-info">Start Recording</button>
+		<button id="play" disabled class="btn btn-warning">Play</button>
+		<button id="download" disabled class="btn btn-dark">Upload</button>
+		<button id="stop" class="btn btn-danger" style="display:none">Stop camera</button>
+	</div>
+
+	<div>
+		Recording format: <select id="codecPreferences" disabled></select>
+	</div>
+
+	<div>
+		<h4>Media Stream Constraints options</h4>
+		<p>Echo cancellation: <input type="checkbox" id="echoCancellation"></p>
+	</div>
+
+	<div>
+		<span id="errorMsg"></span>
+	</div>
+
+</div>
+
+
+
+
